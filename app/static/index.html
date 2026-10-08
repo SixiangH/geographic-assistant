@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#174e46">
+  <meta name="description" content="Read, explore, and connect geography with a source-backed learning companion.">
+  <title>Atlas — Geography Learning Companion</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/personal.css">
+  <script src="/static/personal-store.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#passage">Skip to reading material</a>
+  <header class="app-header">
+    <a class="brand" href="/" aria-label="Atlas home"><span class="brand-icon" aria-hidden="true">◎</span><span>atlas<span class="brand-dot">.</span></span></a>
+    <span class="header-caption">YOUR GEOGRAPHY LEARNING COMPANION</span>
+    <div class="header-actions"><span class="library-status" id="library-status">Connecting…</span><nav class="personal-nav" aria-label="Your learning"><button class="nav-button" id="history-button"><span aria-hidden="true">↶</span> History <span id="history-count" class="nav-count">0</span></button><button class="nav-button" id="saved-button"><span aria-hidden="true">☆</span> Saved <span id="saved-count" class="nav-count">0</span></button></nav><button class="button primary" id="new-material"><span aria-hidden="true">＋</span> New material</button></div>
+  </header>
+  <main>
+    <section class="intro"><div><p class="eyebrow">A LITTLE CURIOSITY GOES A LONG WAY</p><h1>Read the words. <em>Discover the world.</em></h1><p class="intro-description">Turn your reading into a journey through places, ideas, and the connections between them.</p></div><span class="intro-stamp" aria-hidden="true">EXPLORE<br><b>↗</b><br>CONNECT</span></section>
+    <section class="workspace" aria-label="Geography learning workspace">
+      <section class="reading-panel" aria-labelledby="reading-heading">
+        <div class="panel-heading"><div><span class="step-number">01</span><h2 id="reading-heading">Your reading</h2></div><button class="text-button" id="edit-material">Change material ↗</button></div>
+        <div class="reading-meta"><span class="tag" id="document-label">SAMPLE LESSON</span><span id="word-count"></span></div>
+        <div class="reading-toolbar"><div class="filter-group" aria-label="Highlight categories"><button class="filter active" data-filter="all" aria-pressed="true">All concepts</button><button class="filter" data-filter="places" aria-pressed="false">Places</button><button class="filter" data-filter="ideas" aria-pressed="false">Ideas</button></div><label class="toggle-label"><input type="checkbox" id="show-highlights" checked> Highlights</label></div>
+        <div id="reading-status" class="reading-status" role="status" aria-live="polite">Preparing your reading…</div>
+        <article id="passage" class="passage" tabindex="-1" aria-label="Original learning material"></article>
+        <div class="reading-bottom"><span class="hint-symbol" aria-hidden="true">↗</span><p>Select any highlighted phrase to explore it.<br><span>Dotted highlights suggest a possible related concept.</span></p></div>
+        <details class="concept-index"><summary><span>In this reading</span><span id="concept-count">0 concepts</span></summary><div id="concept-list" class="concept-list"></div></details>
+      </section>
+      <aside class="explore-panel" aria-labelledby="explore-heading">
+        <div class="panel-heading"><div><span class="step-number">02</span><h2 id="explore-heading">Explore a little deeper</h2></div><span class="spark" aria-hidden="true">✳</span></div>
+        <div class="search-wrap"><label class="sr-only" for="concept-search">Search the geography library</label><span aria-hidden="true">⌕</span><input id="concept-search" type="search" placeholder="Find a place or concept…" autocomplete="off"><div id="search-results" class="search-results" hidden></div></div>
+        <div class="tabs" role="tablist" aria-label="Exploration views"><button id="tab-learn" class="tab active" role="tab" aria-selected="true" aria-controls="card-view" data-tab="learn">Learn</button><button id="tab-map" class="tab" role="tab" aria-selected="false" aria-controls="card-view" data-tab="map" tabindex="-1">Locate</button><button id="tab-connect" class="tab" role="tab" aria-selected="false" aria-controls="card-view" data-tab="connect" tabindex="-1">Connect</button></div>
+        <div id="card-view" class="card-view" role="tabpanel" aria-labelledby="tab-learn" aria-live="polite"></div>
+      </aside>
+    </section>
+    <footer class="app-footer"><span>Made for curious minds. Grounded in real sources.</span><div><button class="text-button" id="privacy-button">Privacy & sources</button><details class="usage-details"><summary>Session activity</summary><div id="session-usage">No model calls in this session.</div></details></div></footer>
+  </main>
+  <dialog id="material-dialog" class="material-dialog">
+    <form id="material-form">
+      <div class="dialog-heading"><div><p class="eyebrow">START EXPLORING</p><h2>Bring your own reading.</h2></div><button class="icon-button close-dialog" type="button" aria-label="Close material dialog">×</button></div>
+      <p class="dialog-description">Paste an English passage or upload a UTF-8 text file. Your original words stay intact.</p>
+      <p class="small muted">Successful analyses are saved to History on this browser. You can delete them at any time.</p>
+      <label for="material-title">Lesson title <span class="optional">(optional)</span></label><input id="material-title" class="input" maxlength="120" placeholder="e.g. Rivers and the landscapes they shape">
+      <label for="material-text">Learning material</label><textarea id="material-text" placeholder="Paste your English learning material here…" rows="9"></textarea>
+      <div id="drop-zone" class="drop-zone"><span aria-hidden="true">↑</span><label for="material-file">Choose a .txt file</label><span>or drop it here · UTF-8 · up to 1 MB</span><input id="material-file" type="file" accept=".txt,text/plain" class="sr-only"></div>
+      <div class="input-meta"><span id="input-count">0 words</span><span>Up to 10,000 words</span></div>
+      <label class="ai-option"><input type="checkbox" id="use-ai" disabled><span><strong>Use AI to find more connections</strong><small id="ai-notice">Not configured. The local geography library is ready to use.</small></span></label>
+      <p id="material-error" class="error" role="alert" hidden></p>
+      <div class="dialog-actions"><button class="text-button" type="button" id="use-sample">Try the sample lesson</button><button class="button primary" type="submit" id="analyze-button">Explore this reading <span aria-hidden="true">→</span></button></div>
+    </form>
+  </dialog>
+  <dialog id="collection-dialog" class="collection-dialog" aria-labelledby="collection-title"><div class="dialog-heading"><div><p class="eyebrow" id="collection-eyebrow">YOUR LEARNING JOURNEY</p><h2 id="collection-title">History</h2></div><button class="icon-button close-dialog" type="button" aria-label="Close collection">×</button></div><p class="dialog-description" id="collection-description"></p><div class="collection-toolbar"><label class="sr-only" for="collection-search">Search your collection</label><input class="input" type="search" id="collection-search" placeholder="Search your history…"><button class="text-button danger-button" id="clear-collection">Clear history</button></div><p id="collection-status" class="small muted" role="status" aria-live="polite"></p><div id="collection-list" class="collection-list"></div></dialog>
+  <dialog id="note-dialog" class="note-dialog" aria-labelledby="note-title"><div class="dialog-heading"><div><p class="eyebrow">YOUR NOTEBOOK</p><h2 id="note-title">Add a note</h2></div><button class="icon-button close-dialog" type="button" aria-label="Close note editor">×</button></div><p id="note-definition" class="card-definition"></p><label for="personal-note">Your note</label><textarea id="personal-note" rows="5" maxlength="5000" placeholder="A connection, an example, or something you want to remember…"></textarea><p class="small muted">Only saved in this browser. Up to 5,000 characters.</p><p id="note-error" class="error" role="alert" hidden></p><div class="dialog-actions"><button class="button primary" id="save-note">Save note</button></div></dialog>
+  <dialog id="delete-dialog" class="delete-dialog" aria-labelledby="delete-title"><h2 id="delete-title">Delete this entry?</h2><p id="delete-description" class="dialog-description"></p><p id="delete-error" class="error" role="alert" hidden></p><div class="dialog-actions"><button class="button" id="cancel-delete">Cancel</button><button class="button destructive" id="confirm-delete">Delete</button></div></dialog>
+  <dialog id="privacy-dialog" class="privacy-dialog"><div class="dialog-heading"><h2>A clear view of your data.</h2><button class="icon-button close-dialog" type="button" aria-label="Close privacy dialog">×</button></div><h3>Your reading & notebook</h3><p>Successful uploaded or pasted readings and their analyses are saved in History in this browser. Starred explanations, source snapshots, and personal notes are saved in Saved. They remain after a refresh or server restart. You can delete entries or clear either collection. These collections are not synced between browsers, devices, or browser profiles, and clearing browser site data removes them.</p><p>Your passage is sent to the local server for analysis but is not stored on the server's disk. Temporary server analysis results expire after 10 minutes or a server restart. The sample lesson is not added to History.</p><h3>Optional AI assistance</h3><p>If configured and selected, your text is sent to OpenAI for recognition, with storage disabled in the API request. Provider retention policies still apply. AI suggestions are not verified facts. Opening History or Saved does not repeat AI analysis.</p><h3>Knowledge & maps</h3><p>Local cards use attributed Wikipedia excerpts, Natural Earth data, and GeoNames records. Online lookup sends only the requested article name to Wikipedia and may request public Wikidata facts. Public encyclopedia cards are cached for seven days. The world map uses Natural Earth data; external map links open another service.</p><p>Natural Earth uses a particular boundary representation and is not a definitive statement about disputed territories. Study guides are adaptations; consult the linked evidence and article history.</p><a href="https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use" target="_blank" rel="noopener noreferrer">Wikipedia content reuse terms ↗</a><p class="small muted">This is a classroom prototype. The knowledge collection has not completed a formal curriculum review.</p></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
