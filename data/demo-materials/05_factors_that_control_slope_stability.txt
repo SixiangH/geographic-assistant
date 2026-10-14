@@ -1,0 +1,72 @@
+Title: Factors That Control Slope Stability
+Book chapter: Mass Wasting
+Source: Physical Geology (bookdown adaptation)
+Source URL: https://github.com/paleolimbot/physical-geology/blob/master/15-mass-wasting.Rmd
+Original textbook: https://openpress.usask.ca/physicalgeology/
+Authors/source credits: Physical Geology, First University of Saskatchewan Edition (Joyce M. McBeth) and Physical Geology (Steven Earle)
+Accessed: 2026-10-08
+Level: Introductory university textbook, not a secondary-school textbook.
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+License URL: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Required attribution: Physical Geology, First University of Saskatchewan Edition by Karla Panchuk used under a CC BY-NC-SA 4.0 international license.
+Attribution URL: https://openpress.usask.ca/physicalgeology/
+Conversion: Complete prose of the named section. Code chunks, figures, HTML and Markdown formatting removed; no generated expansion. References to figures remain where present.
+Body word count (English words only; header excluded): 2177
+
+--- ARTICLE TEXT ---
+
+Slope Angle and the Forces Acting On A Slope
+
+A block of rock situated on a rock slope is pulled by gravity toward Earth’s centre (vertically down, Figure [figure reference omitted]). We can split the vertical gravitational force into two components (vectors) relative to the slope: one pulling the block down parallel to the slope (the shear force), and the other pulling the block directly into (i.e., perpendicular) to the slope (the normal force).
+
+The shear force pulls the block down the slope, but the block does not move unless the shear force overcomes (is greater than) the friction between the block and the slope. This friction holding the block on the slope may be quite weak if the block has split away from the main body of rock, or may be very strong if the block is still connected to the other rock on the slope. The strength of the relationship between the block and the slope is called the shear strength. For example, in Figure [figure reference omitted]a, the shear strength is greater than the shear force, so the block will not move. In Figure [figure reference omitted]b the slope is steeper, and the shear force is approximately equal to the shear strength. The block may or may not move under these circumstances. In Figure [figure reference omitted]c, the slope is steeper still, so the shear force is considerably greater than the shear strength, and the block will move.
+
+Slopes are created by uplift in the Earth’s crust and modified by erosion. In areas with relatively recent uplift (such as most of British Columbia and the western part of Alberta in Canada), slopes tend to be quite steep. This is especially true where glaciation has taken place because glaciers in mountainous terrain create steep-sided U-shaped valleys. In areas without recent uplift (such as central Canada), slopes are less steep because they have been subjected to erosion, including mass wasting, for long periods of time. Note that mass wasting can happen even on relatively gentle slopes if the shear stress acting on the materials is greater than the materials’ shear strength.
+
+Slope Strength
+
+The strength of the materials on slopes can vary widely. Solid rocks tend to be strong, but rock strength varies widely, so this is not always the case. If we consider just the strength of the rocks and ignore issues such as fracturing and layering, then most crystalline rocks (e.g., granite, basalt, or gneiss) are very strong, while some metamorphic rocks (e.g., schist) are only moderately strong. Sedimentary rocks have variable strength. Dolostone and some limestone are strong, most sandstone and conglomerate are moderately strong, and some sandstone and all mudstones are quite weak.
+
+Fractures, metamorphic foliation (excluding gneissosity and banding), or bedding can significantly reduce the strength of rock. In the context of mass wasting, this is most critical if the planes of weakness are parallel to the slope and least critical if they are perpendicular to the slope. This is illustrated in Figure [figure reference omitted] At locations A and B the bedding is nearly perpendicular to the slope and the layers of rock are relatively stable. At location D the bedding is nearly parallel to the slope and the layers of rock are relatively unstable. At location C the bedding is nearly horizontal, and the stability is intermediate between the two extremes.
+
+Internal variations in the composition and structure of rocks can significantly affect their strength. Schist, for example, may have layers that are rich in sheet silicates (micas) and these will tend to form weak layers. Some minerals tend to be more susceptible to weathering than others, and the weathered products are commonly quite weak (e.g., clay formed from feldspar). The side of Johnson Peak that failed in 1965 (Hope Slide) is made up of chlorite schist (metamorphosed sea-floor basalt) that has feldspar-bearing sills within it. The foliation and the sills are parallel to the steep slope. The schist is relatively weak to begin with, and the feldspar in the sills, which has been altered to clay, makes it even weaker.
+
+Unconsolidated sediments are generally weaker than sedimentary rocks because they are not cemented and, in most cases, have not been significantly compressed by overlying materials. Unconsolidated sediments can still bind together, and the strength of that binding is called cohesion. A cohesive sediment binds together strongly and if you picked it up with a shovel it would stick together in a lump (e.g., sand mixed with clay, clay). A sediment that is not very cohesive is weakly bound and would probably fall apart if you picked it up with a shovel (e.g., sand, silt). The deposits that make up the cliffs at Point Grey, Vancouver, B.C. include sand, silt, and clay, overlain by sand. The finer deposits at Point Grey are relatively cohesive (they maintain a steep slope, Figure [figure reference omitted] left). The overlying sand is not very cohesive (relatively weak) and has a shallower slope because there are many slope failures in the sand deposit.
+
+In contrast to poorly cohesive sediment deposits, glacial till can be as strong as some sedimentary rock. Glacial till is typically a mixture of clay, silt, sand, gravel, and larger clasts and forms and is compressed beneath tens to thousands of metres of glacial ice (Figure [figure reference omitted], right).
+
+Apart from the type of material on a slope, the amount of water that the material contains is the most important factor controlling its strength. This is especially true for unconsolidated materials (e.g., Figure [figure reference omitted]), but it also applies to bodies of rock. Granular sediments, like the sand at Point Grey, have lots of pore spaces between the grains. These spaces may be completely dry (filled only with air), moist (some spaces are water filled), or completely saturated (Figure [figure reference omitted]).
+
+Unconsolidated sediments tend to be strongest when they are moist because the small amounts of water at grain boundaries holds the grains together due to surface tension. Surface tension is the tension at the surface of a fluid that allows the liquid to resist an external force. Liquids always tend to acquire the lowest surface area possible; this happens because molecules at the surface of the fluid are attracted to the molecules below the surface). This is the property of liquid water that allows insects to walk over it. Dry sediments are held together only by the friction between grains, and if they are well sorted or well rounded, or both, this cohesion is weak, due to minimal grain contact. Saturated sediments tend to be the weakest of all because the water pushes the grains apart, decreasing friction between grains. Water will also reduce the strength of solid rock, if the rock has porosity, fractures, bedding planes, and/or clay-bearing zones, especially when the rock is saturated with water (saturated conditions).
+
+Water pressure is an important factor in slope failure. As you move deeper in saturated sediment, the pressure of the water goes up due to gravity acting on the column of water above it; this pressure is called hydrostatic pressure. The greater the depth below the surface of the water table (the point where the rock or sediments are saturated), the greater the water pressure acting on the materials. Holes are often drilled into rocks in road cuts to allow water to drain and relieve this water pressure. One of the hypotheses advanced to explain the 1965 Hope Slide is that cold conditions that winter caused small springs in the lower part of the slope to freeze, preventing water from flowing out. It is possible that water pressure gradually built up within the slope, weakening the rock mass to the extent that the shear strength was no longer greater than the shear force.
+
+Water also has an interesting effect on clay-bearing materials. All clay minerals will absorb a small quantity of water, which reduces the strength of the clay. The smectite clays (such as the bentonite used in cat litter) can absorb a lot of water, and this water pushes the clay sheets apart at a molecular level, which makes the clay swell. Smectite that has expanded in this way has almost no strength; it is extremely slippery. Thus, slopes containing smectite clay are more likely to experience slope failure when they are saturated.
+
+Water can increase the mass of the material on a slope, because the mass of the water is a component of the overall mass of the slope material. This increases the gravitational force pulling the slope materials down. A water saturated body of sediment with 25% porosity weighs approximately 13% more than it does when it is completely dry, so the gravitational shear force is also 13% higher. In the situation shown in Figure [figure reference omitted]b, a 13% increase in the shear force is enough to overcome the shear strength, and the block would move down the slope.
+
+Exercise: Sand and Water  {-}
+
+Source: Steven Earle (2015) CC BY 4.0.View source
+
+If you have ever been to the beach, you already know that sand behaves differently when it is dry than it does when it is wet. The following experiment will demonstrate the strength of sand when it is dry, moist and saturated.
+
+Find approximately half a cup of clean, dry sand (or get some wet sand and dry it out), and then pour it from your hand onto a piece of paper. You should be able to make a cone-shaped pile that has a slope of ~30°. If you pour more sand onto the pile, it will get bigger, but the slope should remain the same.
+
+Now add some water to the sand so that it is moist. One way to do this is to add enough water to saturate the sand, then let the water drain away for a minute. You should be able to form this moist sand into a steep pile (with slopes of ~80°).
+
+Finally, put some sand into a cup and fill the cup with water so the sand is just covered. Swirl it around so that the sand remains in suspension, and then quickly tip it out onto a flat surface. It should spread out over a wide area, forming a pile with a slope of only a few degrees.
+
+Triggers of Mass-Wasting
+
+In the previous section, we discussed the shear force and the shear strength of materials on slopes, and factors that can decrease the shear strength. Shear force is primarily related to slope angle, and once a slope angle is set, the shear force is constant. But shear strength can change quickly for a variety of reasons. Events that lead to a rapid decrease in shear strength are triggers for mass wasting.
+
+An increase in water content is the most common trigger of mass wasting. This can result from rapid melting of snow or ice, heavy rain, or other events that change the pattern of water flow on and through the material. Rapid melting can be caused by a dramatic increase in temperature (e.g., in spring or early summer), or by a volcanic eruption. Heavy rains are typically related to storms. An example of a major slope failure caused by an increase in water content was the Oso landslide that occurred in Washington State, USA in 2014 (Figure [figure reference omitted]). The flow buried the community of Steelhead Haven and killed 43 people.
+
+Changes in water flow patterns can be caused by earthquakes, dammed streams from previous slope, or human structures that interfere with runoff (e.g., buildings, roads, or parking lots). An example of this is a deadly 2005 debris flow in North Vancouver, B.C. This slope failure took place in an area where there had been previous slope failures. A report written in 1980 recommended that the municipal authorities and residents take steps to address surface and slope drainage issues. Unfortunately, little was done to improve the situation or to take steps that could have prevented the 2005 slope failure. The failure happened during a rainy period but was likely triggered by excess runoff related to the roads at the top of this slope and by landscape features including addition of fill to backyards in the area above the failure.
+
+In some cases, a decrease in water content can lead to failure. This is most common with clean sand deposits (e.g., the upper layer in Figure [figure reference omitted] (left)), which loses some of its strength when most of the water around the grains is removed (i.e., as the sand water content drops the surface tension decreases).
+
+Freezing and thawing can also trigger some forms of mass wasting e.g., thawing can release a block of rock that was frozen to a slope by a film of ice.
+
+One other process that can weaken a body of rock or sediment is shaking. The most obvious source of shaking is an earthquake. Shaking from highway traffic, construction, or mining can also weaken rock. Several deadly mass wasting events (including snow avalanches) were triggered by the M7.8 earthquake in Nepal in April 2015.

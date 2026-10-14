@@ -1,0 +1,30 @@
+Title: The Hydrological Cycle
+Book chapter: Streams and Floods
+Source: Physical Geology (bookdown adaptation)
+Source URL: https://github.com/paleolimbot/physical-geology/blob/master/14-streams-and-floods.Rmd
+Original textbook: https://openpress.usask.ca/physicalgeology/
+Authors/source credits: Physical Geology, First University of Saskatchewan Edition (Joyce M. McBeth) and Physical Geology (Steven Earle)
+Accessed: 2026-10-08
+Level: Introductory university textbook, not a secondary-school textbook.
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+License URL: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Required attribution: Physical Geology, First University of Saskatchewan Edition by Karla Panchuk used under a CC BY-NC-SA 4.0 international license.
+Attribution URL: https://openpress.usask.ca/physicalgeology/
+Conversion: Complete prose of the named section. Code chunks, figures, HTML and Markdown formatting removed; no generated expansion. References to figures remain where present.
+Body word count (English words only; header excluded): 614
+
+--- ARTICLE TEXT ---
+
+Water is constantly on the move. It is evaporated from the oceans, lakes, streams, the surface of the land, and from plants (transpiration) by solar energy (Figure [figure reference omitted]). It is transported in its gaseous form through the atmosphere by the wind and condenses to form clouds of water droplets or ice crystals. It falls to the Earth’s surface as rain or snow and flows through streams, into lakes, and eventually back to the oceans. Water on the surface and in streams and lakes infiltrates the ground to become groundwater. Groundwater slowly moves through soils, surficial materials, and pores and cracks in the rock. The groundwater flow paths can intersect with the surface and the water can then move back into streams, lakes and oceans.
+
+Water is stored in various reservoirs as it moves across and through the Earth. A reservoir is a space that stores water. It can be a space we can easily visualize (such as a lake) or a space that is more difficult to visualize (such as the atmosphere or the groundwater in a region). The largest reservoir is the ocean, accounting for 97% of the total volume of water on Earth (Figure [figure reference omitted]). Ocean water is salty, but the remaining 3% of water on Earth is fresh water. Two-thirds of our fresh water is stored in the ground and one-third is stored in ice. The remaining fresh water (about 0.03% of the total) is stored in lakes, streams, vegetation, and the atmosphere.
+
+To put these percentages in perspective, we can compare a 1 litre container of water to the entirety of the Earth’s water supply (Figure [figure reference omitted]). We start by almost filling the container with 970 ml of water and 34 g of salt, to simulate all the sea water on Earth. Then we add one regular-sized (ca 20 ml) ice cube (representing glacial ice) and two teaspoons (ca 10 ml) of groundwater. All of the water that we see around us in lakes and streams and in the atmosphere can be represented by adding three more drops of water from an eyedropper.
+
+Although the water in the atmosphere is only a small proportion of the total water on Earth, the volume is still very large. At any given time, there is the equivalent of approximately 13,000 km3 of water in the air in the form of water vapour and water droplets in clouds. Water is evaporated from the oceans, vegetation, and lakes at a rate of 1,580 km3 per day, and each day nearly the same volume falls back as rain and snow over the oceans and land. Most of the precipitation that falls onto land returns to the ocean in the form of stream flow (117 km3/day) and groundwater flow (6 km3/day). Most of the rest of this chapter is about this 117 km3/day of streamflow.
+
+Exercise 14.1 How Long Does Water Stay in the Atmosphere?
+
+The residence time of a water molecule in the atmosphere (or any of the other reservoirs) can be estimated by dividing the total amount of water in the reservoir by the rate at which it is removed. For the atmosphere, we know that the reservoir size is 13,000 km3, and the rate is 1,580 km3/day. If we divide 13,000 km3 by 1,580 km3/day, we get 8.22 days. This means that, on average, a molecule of water stays in the atmosphere for just over eight days. "Average" needs to be emphasized here because some molecules remain in the air for only a few hours, while others may remain in the air for weeks.
+
+The volume of the oceans is 1,338,000,000 km3 and the rate of removal of water from the oceans is approximately the same as the atmosphere (1,580 km3/day). What is the average residence time of a water molecule in the ocean?

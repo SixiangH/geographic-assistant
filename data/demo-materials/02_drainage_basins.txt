@@ -1,0 +1,52 @@
+Title: Drainage Basins
+Book chapter: Streams and Floods
+Source: Physical Geology (bookdown adaptation)
+Source URL: https://github.com/paleolimbot/physical-geology/blob/master/14-streams-and-floods.Rmd
+Original textbook: https://openpress.usask.ca/physicalgeology/
+Authors/source credits: Physical Geology, First University of Saskatchewan Edition (Joyce M. McBeth) and Physical Geology (Steven Earle)
+Accessed: 2026-10-08
+Level: Introductory university textbook, not a secondary-school textbook.
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+License URL: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Required attribution: Physical Geology, First University of Saskatchewan Edition by Karla Panchuk used under a CC BY-NC-SA 4.0 international license.
+Attribution URL: https://openpress.usask.ca/physicalgeology/
+Conversion: Complete prose of the named section. Code chunks, figures, HTML and Markdown formatting removed; no generated expansion. References to figures remain where present.
+Body word count (English words only; header excluded): 1493
+
+--- ARTICLE TEXT ---
+
+A stream is a body of flowing surface water of any size, ranging from a tiny trickle to a mighty river. The area from which the water flows to form a stream is known as its drainage basin or watershed. All of the precipitation (rain or snow) that falls within a drainage basin eventually flows into its stream, unless some of this water is able to cross into an adjacent drainage basin via groundwater flow. An example of a drainage basin is shown in Figure [figure reference omitted]
+
+An important characteristic of streams is their gradient, the rate of change in elevation with distance along the stream. A steep gradient has a rapid change in elevation with horizontal distance, and a shallow gradient has a slow change in elevation with horizontal distance. Cawston Creek drainage basin in BC is approximately 25 km2 and is a typical small drainage basin within a very steep glaciated valley. As shown in Figure [figure reference omitted], the upper and middle parts of the creek have steep gradients averaging about 200 m/km but ranging from 100 to 350 m/km, and the lower part, within the valley of the Similkameen River, is relatively flat at <5 m/km.
+
+The shape of the valley has changed through time to result in the shape we see now. First, there was tectonic uplift (related to tectonic plate convergence). Then the landscape changed due to stream erosion and mass wasting (landslides). This was followed by several episodes of glacial erosion. Finally, there was post-glacial stream erosion up to the present time. The lowest elevation of Cawston Creek (275 m, where the creek flows into the Similkameen River) is its base level. Cawston Creek cannot erode below this level unless the Similkameen River erodes deeper into its flood plain (the area that is inundated during a flood). Base level is the elevation where a stream will no longer erode deeper into the bedrock or sediments it flows through, because the elevation of the stream does not drop below this level, and further erosion can only occur if there is an elevation drop to propel the water deeper due to the force of gravity.
+
+The ocean is the ultimate base level, but lakes and other rivers act as base levels for many smaller streams.
+
+The water supply for the Vancouver, BC metropolitan area comes from three large drainage basins on the north shore of Burrard Inlet, as shown in Figure [figure reference omitted] This map illustrates the concept of a drainage basin divide. The boundary between two drainage basins is the ridge of land between them. A drop of rain falling on the boundary between the Capilano and Seymour drainage basins, for example, could flow into either basin. Rain falling on the Capilano basin side cannot flow into the Seymour drainage basin, because of the drainage basin divide.
+
+The pattern of tributaries within a drainage basin depends largely upon the type of underlying rock, and on structures within that rock such as folds, fractures, and faults. Three types of drainage patterns are illustrated in Figure [figure reference omitted] Dendritic patterns, which are by far the most common, develop in areas where the rock (or unconsolidated material) beneath the stream does not have structures that control the stream flow patterns such as folds and joints; the materials can be eroded by the stream equally easily in all directions. Most areas of British Columbia have dendritic patterns, as do most areas of the prairies and the Canadian Shield.
+
+Trellis drainage patterns typically develop where sedimentary rocks have been folded or tilted, and then eroded to varying degrees depending on their resistance to erosion. The Rocky Mountains of BC and AB have some fine examples of trellis drainage.
+
+Rectangular patterns develop in areas that have very little topography and a system of bedding planes, fractures, or faults that form a rectangular network. Rectangular drainage patterns are rare in Canada
+
+In many parts of Canada, especially relatively flat areas with thick glacial sediments, and throughout much of Canadian Shield in eastern and central Canada, drainage patterns are chaotic , also known as deranged (Figure [figure reference omitted], left). Lakes and wetlands are common in this type of environment.
+
+Radial drainage (Figure [figure reference omitted], right) is a pattern that forms around isolated mountains (such as volcanoes) or hills. The individual streams that radiate out from the hill typically have dendritic drainage patterns.
+
+The process of a stream eroding downward into bedrock is called downcutting. Over geological time, and during tectonic quiescence, a stream will erode its drainage basin into a smooth profile similar to that shown in Figure [figure reference omitted] This is called a graded stream. Graded streams are steepest in their headwaters and their gradient gradually decreases toward their mouths. Ungraded streams are still in the process of rapidly eroding and downcutting their drainage basin, they have steep sections at various points, and typically have rapids and waterfalls at numerous locations along their lengths (e.g., Cawston Creek, Figure [figure reference omitted]).
+
+A graded stream can become ungraded if there is renewed tectonic uplift, or if there is a change in the base level. Base level changes can occur due to tectonic uplift or some other reason such as construction of a dam downstream. As stated earlier, the base level of Cawston Creek is defined by the level of the Similkameen River, but this can change, and has done so in the past. Figure [figure reference omitted] shows the valley of the Similkameen River in the Keremeos area. The river channel is just beyond the row of trees. The green field in the distance is underlain by material eroded from the hills behind and deposited by a small creek (not Cawston Creek) adjacent to the Similkameen River when its level was higher than it is now. Some time in the past several centuries, the Similkameen River eroded down through these deposits (forming the steep bank on the other side of the river), and the base level of the small creek was lowered by about 10 m. Over the next few centuries, this creek will erode through the sediments and eventually become graded again.
+
+Another example of a change in base level can be seen along the Juan de Fuca Trail on southwestern Vancouver Island. As shown in Figure [figure reference omitted], many of the small streams along this part of the coast flow into the ocean as waterfalls. It is evident that the land in this area has risen by about 5 m in the past few thousand years, probably in response to deglaciation. The streams that used to flow directly into the ocean now have a lot of downcutting to do before they will be a graded stream again.
+
+Sediments accumulate within the channel and flood plain of a stream, and then, if the base level changes, or if there is less sediment supplied to the stream to deposit, the stream may cut down through these existing sediments to form terraces. A terrace on the Similkameen River is shown in Figure [figure reference omitted] and terraces on the Fraser River are shown in Figure [figure reference omitted].
+
+In the late 19th century, American geologist William Davis proposed that streams and the surrounding terrain develop in a cycle of erosion (Figure [figure reference omitted]). Following tectonic uplift, the stream patterns are immature. Streams erode quickly, developing deep V-shaped valleys that tend to follow relatively straight paths. Gradients are high, and profiles are ungraded. Rapids and waterfalls are common. As the landscape matures, the streams erode wider valleys and deposited thick sediment layers. Even after maturity, gradients are slowly reduced and grading increases. In old age, streams are surrounded by rolling hills, and they occupy wide sediment-filled valleys. Meandering patterns are common, and erosion now is focussed towards the channel walls, with little downcutting.
+
+Davis’s work was done long before the idea of plate tectonics, and he was also not familiar with the impacts of glacial erosion on streams and their environments. While some parts of his idea are out of date, it is still a useful way to understand streams and their evolution. Plate tectonic activity and other processes such as isostatic rebound after glaciation results in uplift that alters stream gradients, so streams are constantly adjusting due to these changing conditions. It would be relatively rare to find a stream that is able to mature through all of these stages without interruption.
+
+Exercise 14.2 The Effect of a Dam on Base Level
+
+When a dam is built on a stream, a reservoir (artificial lake) forms behind the dam. The dam reservoir temporarily (for many decades at least) creates a new base level for the part of the stream above the reservoir. How does the formation of a dam reservoir affect the stream where it enters the reservoir, and what happens to the sediment it was carrying? The water leaving the dam has no sediment in it. Why? How does this affect the stream below the dam?

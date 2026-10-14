@@ -1,0 +1,318 @@
+Forest|landform|forests
+Lake|landform|lakes
+Pond|landform|ponds
+Wetland|landform|wetlands
+Marsh|landform|marshes
+Swamp|landform|swamps
+Bog|landform|bogs
+Peatland|landform|peatlands
+Grassland|landform|grasslands
+Woodland|landform|woodlands
+Shrubland|landform|shrublands
+Mangrove|landform|mangroves;mangrove forest;mangrove forests
+Rainforest|landform|rainforests
+Temperate rainforest|landform|temperate rainforests
+Temperate broadleaf and mixed forests|landform|temperate forest;temperate forests
+Temperate grasslands, savannas, and shrublands|landform|temperate grassland;temperate grasslands
+Steppe|landform|steppes
+Prairie|landform|prairies
+Chaparral|landform|
+Heath|landform|heathland;heathlands
+Alpine tundra|landform|
+Cloud forest|landform|cloud forests
+Kelp forest|landform|kelp forests
+Seagrass|physical|seagrasses
+Vegetation|physical|
+Habitat|concept|habitats
+Ecological succession|process|
+Habitat fragmentation|process|
+Habitat destruction|process|habitat loss
+Reforestation|process|
+Afforestation|process|
+Forest degradation|process|
+Logging|human|
+Clearcutting|human|clear-cutting;clear cutting
+Overgrazing|process|
+Wildfire|process|wildfires;forest fire;forest fires;bushfire;bushfires
+Desert greening|human|
+Ecological restoration|human|ecosystem restoration
+Conservation biology|human|biodiversity conservation
+Protected area|human|protected areas
+National park|human|national parks
+Ecosystem service|concept|ecosystem services
+Carbon sink|concept|carbon sinks
+Carbon sequestration|process|
+Carbon cycle|process|
+Nitrogen cycle|process|
+Photosynthesis|process|
+Food chain|concept|food chains
+Food web|concept|food webs
+Invasive species|concept|
+Endangered species|concept|
+Extinction|process|
+Soil|physical|soils
+Topsoil|physical|
+Humus|physical|
+Soil horizon|physical|soil horizons
+Soil formation|process|pedogenesis
+Soil fertility|concept|
+Soil erosion|process|
+Soil degradation|process|
+Soil salinity|process|soil salinization;soil salinisation
+Soil compaction|process|
+Soil conservation|human|
+Terrace (agriculture)|human|terrace farming;terraced farming;agricultural terraces
+Contour plowing|human|contour ploughing
+Desert pavement|landform|desert pavements
+Loess|physical|
+Permafrost|physical|
+Active layer|physical|
+Thermokarst|landform|
+Groundwater|physical|ground water
+Aquifer|physical|aquifers
+Water table|concept|water tables
+Spring (hydrology)|landform|natural spring;natural springs
+Artesian aquifer|physical|artesian aquifers;artesian well;artesian wells
+Groundwater recharge|process|aquifer recharge
+Groundwater depletion|process|
+Hydrology|concept|
+Fresh water|physical|freshwater
+Brackish water|physical|
+Salinity|concept|
+Stream|landform|streams
+Tributary|landform|tributaries
+River source|landform|river sources;headwaters
+River mouth|landform|river mouths
+Distributary|landform|distributaries
+Drainage divide|landform|drainage divides;watershed divide
+River discharge|concept|stream discharge
+Drainage density|concept|
+Baseflow|process|base flow
+Hydrograph|concept|hydrographs
+Interception (water)|process|rainfall interception;canopy interception
+Evapotranspiration|process|
+Water scarcity|human|water shortage;water shortages
+Water pollution|process|
+Eutrophication|process|
+Algal bloom|process|algal blooms
+Acid rain|process|
+Flood|process|floods;flooding
+Flash flood|process|flash floods
+Drought|climate|droughts
+Dam|human|dams
+Reservoir|landform|reservoirs
+Hydroelectricity|human|hydroelectric power;hydropower
+Desalination|human|
+Rainwater harvesting|human|
+Watershed management|human|
+Sediment|physical|sediments
+Silt|physical|
+Alluvium|physical|
+Alluvial fan|landform|alluvial fans
+Braided river|landform|braided rivers
+Gorge|landform|gorges
+Canyon|landform|canyons
+Valley|landform|valleys
+V-shaped valley|landform|V-shaped valleys
+Hill|landform|hills
+Mountain range|landform|mountain ranges
+Ridge|landform|ridges
+Escarpment|landform|escarpments
+Mesa|landform|mesas
+Butte|landform|buttes
+Basin (geology)|landform|geological basin;geological basins
+Rift valley|landform|rift valleys
+Cave|landform|caves
+Sinkhole|landform|sinkholes
+Stalactite|landform|stalactites
+Stalagmite|landform|stalagmites
+Limestone|physical|
+Granite|physical|
+Basalt|physical|
+Igneous rock|physical|igneous rocks
+Sedimentary rock|physical|sedimentary rocks
+Metamorphic rock|physical|metamorphic rocks
+Rock cycle|process|
+Mineral|physical|minerals
+Magma|physical|
+Lava|physical|
+Volcanic eruption|process|volcanic eruptions
+Caldera|landform|calderas
+Shield volcano|landform|shield volcanoes
+Stratovolcano|landform|stratovolcanoes;composite volcano;composite volcanoes
+Hotspot (geology)|concept|volcanic hotspot;volcanic hotspots
+Fault (geology)|landform|geological fault;geological faults
+Fold (geology)|landform|geological fold;geological folds
+Orogeny|process|mountain building
+Isostasy|process|
+Mass wasting|process|mass movement;mass movements
+Landslide|process|landslides
+Mudflow|process|mudflows
+Rockfall|process|rockfalls
+Avalanche|process|avalanches
+Soil creep|process|
+Frost weathering|process|freeze-thaw weathering
+Chemical weathering|process|
+Biological weathering|process|
+Hydraulic action|process|
+Abrasion (geology)|process|abrasion
+Attrition (erosion)|process|sediment attrition
+Longshore drift|process|
+Coastal erosion|process|
+Coastal flooding|process|
+Beach|landform|beaches
+Bay|landform|bays
+Headland|landform|headlands
+Cliff|landform|cliffs
+Sea cave|landform|sea caves
+Stack (geology)|landform|sea stack;sea stacks
+Natural arch|landform|natural arches;sea arch;sea arches
+Spit (landform)|landform|coastal spit;coastal spits
+Tombolo|landform|tombolos
+Lagoon|landform|lagoons
+Salt marsh|landform|salt marshes
+Tidal flat|landform|tidal flats;mudflat;mudflats
+Barrier island|landform|barrier islands
+Continental shelf|landform|continental shelves
+Continental slope|landform|continental slopes
+Abyssal plain|landform|abyssal plains
+Oceanic trench|landform|oceanic trenches;ocean trench;ocean trenches
+Mid-ocean ridge|landform|mid-ocean ridges
+Seamount|landform|seamounts
+Tide|process|tides
+Storm surge|process|storm surges
+Tsunami|process|tsunamis
+Wind wave|process|ocean wave;ocean waves
+Upwelling|process|
+Downwelling|process|
+Ocean acidification|process|
+Coral bleaching|process|
+Sea level rise|process|sea-level rise
+Coastal management|human|
+Managed retreat|human|
+Sea wall|human|seawall;seawalls;sea walls
+Groyne|human|groynes;groin;groins
+Beach nourishment|human|
+Ice sheet|landform|ice sheets
+Ice cap|landform|ice caps
+Iceberg|landform|icebergs
+Sea ice|physical|
+Moraine|landform|moraines
+Drumlin|landform|drumlins
+Esker|landform|eskers
+Cirque|landform|cirques
+Arête|landform|arete;aretes
+Pyramidal peak|landform|pyramidal peaks;glacial horn
+Hanging valley|landform|hanging valleys
+Glacial lake|landform|glacial lakes
+Glacial erosion|process|
+Glacial retreat|process|
+Atmosphere of Earth|physical|Earth's atmosphere
+Troposphere|physical|
+Stratosphere|physical|
+Ozone layer|physical|
+Ozone depletion|process|
+Air pollution|process|
+Atmospheric pressure|climate|air pressure
+Wind|climate|winds
+Sea breeze|climate|sea breezes
+Land breeze|climate|land breezes
+Jet stream|climate|jet streams
+Cloud|climate|clouds
+Fog|climate|
+Rain|climate|rainfall
+Snow|climate|snowfall
+Hail|climate|hailstones
+Dew|climate|
+Frost|climate|
+Thunderstorm|climate|thunderstorms
+Lightning|climate|
+Tornado|climate|tornadoes
+Anticyclone|climate|anticyclones
+Extratropical cyclone|climate|extratropical cyclones
+Weather front|climate|weather fronts
+Cold front|climate|cold fronts
+Warm front|climate|warm fronts
+Heat wave|climate|heat waves;heatwave;heatwaves
+Urban heat island|climate|urban heat islands
+Temperature inversion|climate|temperature inversions
+Lapse rate|climate|
+Convection|process|
+Adiabatic process|process|adiabatic cooling;adiabatic heating
+Microclimate|climate|microclimates
+Season|climate|seasons
+Solstice|concept|solstices
+Equinox|concept|equinoxes
+Earth's rotation|process|Earth rotation
+Earth's orbit|process|Earth orbit
+Axial tilt|concept|
+Solar radiation|physical|insolation
+Human settlement|human|human settlements;geographical settlement;geographical settlements
+Village|human|villages
+Town|human|towns
+City|human|cities
+Megacity|human|megacities
+Metropolitan area|human|metropolitan areas
+Suburb|human|suburbs
+Urban sprawl|human|
+Rural area|human|rural areas
+Land use|human|land-use
+Land cover|concept|land-cover
+Population growth|human|
+Population pyramid|human|population pyramids
+Birth rate|human|birth rates
+Death rate|human|death rates
+Life expectancy|human|
+Population ageing|human|population aging
+Rural flight|human|rural-to-urban migration;rural urban migration
+Push and pull factors in migration|human|push factors;pull factors
+Globalization|human|globalisation
+Industrialisation|human|industrialization
+Deindustrialization|human|deindustrialisation
+Economic sector|human|economic sectors
+Subsistence agriculture|human|subsistence farming
+Intensive farming|human|intensive agriculture
+Extensive farming|human|extensive agriculture
+Organic farming|human|organic agriculture
+Crop rotation|human|
+Monoculture|human|
+Overfishing|human|
+Aquaculture|human|
+Fossil fuel|physical|fossil fuels
+Coal|physical|
+Petroleum|physical|crude oil
+Natural gas|physical|
+Solar power|human|solar energy
+Wind power|human|wind energy
+Geothermal energy|human|geothermal power
+Biomass|physical|
+Mining|human|
+Quarry|human|quarries
+Recycling|human|
+Waste management|human|
+Ecotourism|human|
+Sustainable agriculture|human|
+Food security|human|
+Environmental degradation|process|
+Climate change mitigation|human|
+Climate change adaptation|human|
+Natural hazard|concept|natural hazards
+Natural disaster|concept|natural disasters
+Disaster risk reduction|human|
+Topography|concept|
+Elevation|concept|
+Relief (geography)|concept|terrain relief;topographic relief
+Geographic coordinate system|concept|geographical coordinate system
+Geographic distance|concept|
+Topographic map|concept|topographic maps
+Thematic map|concept|thematic maps
+Choropleth map|concept|choropleth maps
+Geographic information science|concept|
+Cartography|concept|
+Geography|concept|
+Physical geography|concept|
+Human geography|concept|
+Geomorphology|concept|
+Climatology|concept|
+Oceanography|concept|
+Biogeography|concept|

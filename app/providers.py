@@ -7,6 +7,7 @@ from urllib.parse import quote
 import httpx
 
 from app.config import Settings
+from app.ai_errors import ai_failure_reason
 
 UA = "GeographyLearningAgent/0.1 (local educational prototype)"
 
@@ -48,9 +49,9 @@ class AIRecognizer:
                     output = "".join(c.get("text", "") for item in payload.get("output", []) for c in item.get("content", []) if c.get("type") == "output_text")
                     parsed = json.loads(output)
                     discoveries.extend(parsed["mentions"])
-        except (httpx.HTTPError, ValueError, KeyError, TypeError, ProviderError):
+        except (httpx.HTTPError, ValueError, KeyError, TypeError, ProviderError) as error:
             usage["unaccounted_calls"] = 1
-            return discoveries, usage, "AI assistance was unavailable or incomplete. Local recognition is still available."
+            return discoveries, usage, f"AI assistance unavailable: {ai_failure_reason(error)}. Local recognition is still available."
         warning = "AI assistance covered the first 48,000 characters; local recognition covered the entire passage." if len(text) > 48_000 else None
         return discoveries, usage, warning
 

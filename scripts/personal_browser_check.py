@@ -10,10 +10,11 @@ OUT.mkdir(exist_ok=True)
 
 
 def upload(page, title, text):
-    page.get_by_role("button", name="New material", exact=False).click()
+    page.locator("#new-material").click()
     page.get_by_label("Lesson title", exact=False).fill(title)
     page.get_by_label("Learning material", exact=True).fill(text)
     page.locator("#use-ai").uncheck()
+    page.locator("#material-mode").select_option("explore")
     page.get_by_role("button", name="Explore this reading", exact=False).click()
     expect(page.locator("#material-dialog")).not_to_be_visible()
 
@@ -29,7 +30,8 @@ def main():
         page.on("request", lambda request: analysis_requests.append(request.url) if "/api/analyze" in request.url else None)
         page.on("request", lambda request: card_requests.append(request.url) if "/api/card?" in request.url else None)
         page.goto("http://127.0.0.1:8000", wait_until="networkidle")
-        expect(page.locator(".card-title")).to_have_text("Oceanic climate")
+        page.locator("#material-dialog .close-dialog").click()
+        expect(page.locator("#passage")).to_contain_text("Start with your own reading")
         expect(page.locator("#history-count")).to_have_text("0")
         page.locator("#history-button").click()
         expect(page.locator(".collection-empty")).to_be_visible()
@@ -37,6 +39,8 @@ def main():
 
         text = "🌍 France has an oceanic climate.\n\nA Mediterranean climate has dry summers and wetter winters."
         upload(page, "Two climates", text)
+        climate_summary = page.locator("#material-summary").inner_text()
+        assert 0 < len(climate_summary.split()) <= 50
         expect(page.locator("#history-count")).to_have_text("1")
         page.locator(".mention").filter(has_text="oceanic climate").click()
         expect(page.locator(".card-title")).to_have_text("Oceanic climate")
@@ -66,6 +70,7 @@ def main():
         before = len(analysis_requests)
         page.get_by_role("button", name="Open Two climates", exact=True).click()
         expect(page.locator("#passage")).to_have_text(text)
+        expect(page.locator("#material-summary")).to_have_text(climate_summary)
         assert len(analysis_requests) == before
         assert page.locator(".mention").count() >= 3
         page.locator(".mention").filter(has_text="oceanic climate").click()
@@ -77,6 +82,7 @@ def main():
         page.get_by_role("button", name="Georgia (country)", exact=False).click()
         expect(page.locator(".card-title")).to_have_text("Georgia (country)")
         page.reload(wait_until="networkidle")
+        page.locator("#material-dialog .close-dialog").click()
         expect(page.locator("#history-count")).to_have_text("3")
         expect(page.locator("#saved-count")).to_have_text("1")
         page.locator("#history-button").click()
@@ -105,6 +111,7 @@ def main():
         # Independent collections, confirmation cancellation, and cross-tab counts.
         other = context.new_page()
         other.goto("http://127.0.0.1:8000", wait_until="networkidle")
+        other.locator("#material-dialog .close-dialog").click()
         expect(other.locator("#history-count")).to_have_text("3")
         page.locator("#history-button").click()
         page.get_by_role("button", name="Delete A river lesson", exact=True).click()

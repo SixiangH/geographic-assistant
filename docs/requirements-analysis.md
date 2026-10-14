@@ -262,3 +262,41 @@ Integrations must follow applicable licences and current service policies.
 - [Kiwix / Kiwix 离线百科](https://kiwix.org/en/)
 - [Wikimedia Terms / Wikimedia 使用条款](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use)
 - [OpenStreetMap tile policy / OpenStreetMap 瓦片政策](https://operations.osmfoundation.org/policies/tiles/)
+
+## Local library browsing / 本地知识库浏览
+
+Students can open Library beside History and Saved, browse all local knowledge alphabetically, search titles/aliases/descriptions, filter by category, and move between pages. Selecting an entry shows its explanation and sources in the existing explorer, with maps, relationships, and starring where available. The reading stays intact. Empty results, loading failures, and keyboard/mobile access are supported.
+
+学生可从 History、Saved 旁的 Library 入口按字母顺序浏览全部本地知识，搜索标题、别名和解释，筛选分类并翻页。点击条目在现有探索区域显示解释和来源，并使用适用的地图、关系与收藏功能。阅读材料保持完整，支持空结果、加载失败及键盘、手机访问。
+
+## Bundled library and online snapshots / 内置知识库与在线快照
+
+The local library contains bundled knowledge only. Analysis no longer retrieves or permanently promotes newly discovered concepts; online cards are retrieved on click and cached for seven days outside Library/search. Legacy learned rows are excluded without deleting existing data. Saved stores a complete card and source snapshot in browser IndexedDB, including online concepts absent from the library, so reopening Saved needs neither the server cache nor a new lookup. Material titles and IDs are no longer attached to online cards.
+
+本地知识库仅包含项目内置条目。分析不再自动检索或永久收录新概念；在线卡片在点击时检索，临时缓存七天，不进入 Library/搜索。旧版 learned 数据不再载入知识库，但不删除既有数据。Saved 在浏览器 IndexedDB 中保存完整卡片与来源快照，包括知识库中没有的在线条目，因此重开收藏不依赖服务端缓存或重新检索。在线卡片不再附加材料标题与标识。
+
+Explorer navigation retains up to 40 previous card snapshots without repeating source/model calls. Return controls reopen the originating collection with the Library query/category/page preserved. The headline uses one upright serif typeface.
+
+探索导航保留最多 40 张之前的卡片快照，返回不重复来源或模型调用。返回按钮重新打开原集合，Library 保留搜索、分类和分页状态。顶部标题统一采用正体衬线字体。
+
+## Material summaries / 材料摘要
+
+Every accepted reading receives an English summary of at most 50 whitespace-separated words, shown inside Explore a little deeper, below its heading. Local mode ranks and extracts up to four key sentences without model calls. Enabling AI requests one additional Responses API call for a coherent summary; failed or incomplete responses fall back to local key sentences, with a visible notice. Word limits are enforced on the server even if a model exceeds them. Long AI inputs use bounded representative excerpts across the passage and are labelled accordingly.
+
+每篇已接受材料都生成不超过 50 个按空白分隔英语单词的摘要，展示于 Explore a little deeper 内的标题下方。本地模式排序并提取最多四个关键句，不调用模型。启用 AI 会增加一次 Responses API 调用以生成连贯梗概；失败或不完整响应回退到本地关键句，并显示提示。即使模型超出要求，服务端也会强制限制词数。较长 AI 输入使用遍布原文的受限代表摘录，并明确标注。
+
+Summary text, type, word count, and warnings are stored inside the analysis snapshot in browser History. Reopening a new history record restores the exact summary without model calls. Older history records without summaries show an unavailable notice and may be re-analyzed. Summaries do not change when browsing other knowledge cards, and original material remains unchanged. AI summary usage is included in session token/call/cost accounting. Sample lessons use local summaries only.
+
+摘要文字、类型、词数和提示随分析快照存入浏览器 History。重新打开新历史记录恢复原摘要，不调用模型。没有摘要的旧记录显示缺失提示，可重新分析。浏览其他知识卡片不改变材料摘要，原文保持完整。AI 摘要用量计入会话 token、调用及费用统计。示例课文仅使用本地摘要。
+
+
+## Guided study / 引导学习
+
+Guided study adds confirmed targets, prediction and revision, baseline and recall/transfer checks, seven-day review reminders, browser-only learning evidence, provisional self-assessment, and JSON export. Explore freely remains available. See [Guided Study and Learning Evidence](guided-study.md).
+
+引导学习新增目标确认、预测与修订、基线和回忆或迁移检查、七天复习提醒、仅保存在浏览器的学习证据、暂定自评及 JSON 导出。保留自由探索模式，详见上方双语设计文档。
+## Current Guided flow / 当前引导流程（2026-10-15）
+
+Current requirements supersede the earlier baseline/prediction/confidence sequence: start from a chosen reading, select unfamiliar explicit concepts from a frequency-sorted list with no default selections, reflect during reading and compare with sourced explanations, then answer at most five AI-generated multiple-choice and true/false questions. The right panel provides Unfamiliar concepts, Quick quiz and Explore tabs, each with small task-completion guidance. Zero unfamiliar concepts is allowed. AI target recommendation is removed. See [Reading-first Guided Study](guided-study.md) for the implemented flow and storage boundaries.
+
+当前需求取代早期学前/预测/信心链路：从选定材料开始，按频率排列明确概念且不预选，选择不熟悉概念，在阅读中写理解并与来源解释比对，再完成最多五道 AI 选择题与判断题。右侧提供 Unfamiliar concepts、Quick quiz 与 Explore 切换及小字任务完成提示。允许零个不熟概念，移除 AI 目标推荐。实施流程及存储边界详见 [阅读优先引导学习](guided-study.md)。

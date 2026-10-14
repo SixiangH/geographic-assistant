@@ -98,7 +98,17 @@ class Recognizer:
                 continue
             candidates = self.aliases.get(title.casefold()) or [{"id": "remote:" + title, "title": title, "category": category}]
             for match in re.finditer(re.escape(phrase), text):
-                if any(match.start() < s["py_end"] and match.end() > s["py_start"] for s in spans):
-                    continue
+                overlaps = [s for s in spans if match.start() < s["py_end"] and match.end() > s["py_start"]]
+                if overlaps:
+                    # A sourced climate interpretation can encompass a generic word such as
+                    # "rainfall". Preserve countries, ambiguous names, and partial overlaps.
+                    if not (item.get("kind") == "inferred" and len(candidates) == 1
+                            and candidates[0]["category"] == "climate"
+                            and candidates[0]["id"] in {r["id"] for r in self.records}
+                            and all(s["category"] == "climate" and s["kind"] == "explicit"
+                                    and match.start() <= s["py_start"] and match.end() >= s["py_end"]
+                                    and len(phrase) > len(s["text"]) for s in overlaps)):
+                        continue
+                    spans = [s for s in spans if s not in overlaps]
                 spans.append(self.mention(text, match.start(), match.end(), candidates, item.get("kind", "explicit"), confidence))
         return sorted(spans, key=lambda s: s["start"])

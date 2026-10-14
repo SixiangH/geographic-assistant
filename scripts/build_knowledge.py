@@ -292,6 +292,12 @@ async def main():
         record["relations"] = [rel for rel in record["relations"] if rel["id"] in ids]
     (DATA / "knowledge.json").write_text(json.dumps(records, indent=2, ensure_ascii=False), encoding="utf-8")
     print("Saved", len(records), "records")
+    # Full rebuilds include the extended classroom catalog as well.
+    if __package__:
+        from .expand_knowledge import expand
+    else:
+        from expand_knowledge import expand
+    await expand()
 
 if __name__ == "__main__":
     asyncio.run(main())

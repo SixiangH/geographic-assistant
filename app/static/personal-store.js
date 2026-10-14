@@ -4,9 +4,9 @@
 class PersonalStore {
   constructor() {
     this.connection = new Promise((resolve, reject) => {
-      const request = indexedDB.open("atlas-personal", 1);
+      const request = indexedDB.open("atlas-personal", 2);
       request.onupgradeneeded = () => {
-        for (const name of ["history", "saved"]) {
+        for (const name of ["history", "saved", "study"]) {
           if (!request.result.objectStoreNames.contains(name)) request.result.createObjectStore(name, { keyPath: "id" });
         }
       };

@@ -8,12 +8,14 @@ const state = {
   requestSequence: 0, searchSequence: 0, searchController: null,
   historyId: null, analysis: null, collection: "history", collectionSequence: 0,
   savedIds: new Set(), noteId: null, pendingDelete: null,
+  materialId: null, navigation: [], returnTo: null,
   session: crypto.randomUUID(), usage: { model_calls: 0, input_tokens: 0, output_tokens: 0, tool_requests: 0, cache_hits: 0, cost: 0, unknownCost: false },
 };
 
 function element(tag, className = "", text = "") {
   const node = document.createElement(tag);
   if (className) node.className = className;
+  if (window.atlasUI) window.atlasUI.decorate(node, className);
   if (text) node.textContent = text;
   return node;
 }
@@ -138,6 +140,7 @@ function selectMention(index) {
 }
 
 async function loadCard(id) {
+  if (state.card && state.card.id !== id) rememberCard();
   const sequence = ++state.requestSequence;
   state.card = null;
   const view = $("#card-view");
@@ -177,10 +180,15 @@ function renderTabs() {
 }
 
 function renderCard() {
+  $("#back-card").disabled = !state.navigation.length;
+  $("#back-collection").hidden = !state.returnTo;
+  $("#back-collection").textContent = `Back to ${state.returnTo === "library" ? "Library" : state.returnTo === "history" ? "History" : "Saved"}`;
   renderTabs();
   const view = $("#card-view");
   view.replaceChildren();
+  view.scrollTop = 0;
   const card = state.card;
+  if (window.atlasStudy?.renderGate(view)) return;
   if (!card) {
     const empty = element("div", "empty-view");
     empty.append(element("span", "empty-icon", "◎"), element("h3", "", "Every word opens a window."), element("p", "", "Choose a highlighted phrase from your reading, or search for a place or concept above."));
@@ -202,7 +210,58 @@ function renderCard() {
   if (state.tab === "map") renderLocate(view, card);
   if (state.tab === "connect") renderConnect(view, card);
   appendSources(view, card);
+  if (card.materials?.length) {
+    view.append(element("h4", "section-label", "Added from your materials"));
+    for (const material of card.materials) {
+      const button = element("button", "text-button provenance-material", `${material.title} · ${material.id.slice(0, 8)}`);
+      button.addEventListener("click", async () => {
+        try {
+          if (await personalStore.get("history", material.id)) await restoreHistory(material.id);
+          else toast("This material is not available in this browser's History.");
+        } catch (error) { toast(error.message); }
+      });
+      view.append(button);
+    }
+  }
+  window.atlasStudy?.afterCard(view);
 }
+
+function renderSummary() {
+  const summary = state.analysis?.summary;
+  if (state.analysis?.ai_enabled === false || summary?.kind === "disabled") {
+    $("#material-summary").textContent = "Enable AI when submitting your material to get a summary.";
+    $("#summary-warning").textContent = "";
+    $("#summary-warning").hidden = true;
+    return;
+  }
+  const words = summary?.text?.split(/\s+/).filter(Boolean) || [];
+  const summaryText = words.length > 50 ? words.slice(0, 50).join(" ") + "…" : summary?.text;
+  $("#material-summary").textContent = summaryText || "This older reading has no saved summary. Analyze it again to generate one.";
+  $("#summary-warning").textContent = summary?.warning || "";
+  $("#summary-warning").hidden = !summary?.warning;
+}
+
+function rememberCard() {
+  if (state.card) state.navigation.push({card: structuredClone(state.card), tab: state.tab});
+  if (state.navigation.length > 40) state.navigation.shift();
+}
+$("#back-card").addEventListener("click", () => {
+  const previous = state.navigation.pop();
+  if (!previous) return;
+  state.requestSequence++;
+  activateMention(null);
+  state.card = previous.card;
+  state.tab = previous.tab;
+  renderCard();
+});
+$("#back-collection").addEventListener("click", () => {
+  if (state.returnTo === "library") $("#library-button").click();
+  else openCollection(state.returnTo);
+});
+$("#back-reading").addEventListener("click", () => {
+  $("#passage").scrollIntoView({block: "center"});
+  $("#passage").focus({preventScroll: true});
+});
 
 function renderLearn(view, card) {
   view.append(element("p", "card-definition" + (card.definition.length > 600 ? " long" : ""), card.definition));
@@ -231,7 +290,7 @@ function renderLearn(view, card) {
     card.relations.forEach(relation => list.append(relatedButton(relation)));
     view.append(list);
   }
-  if (card.question) appendQuiz(view, card);
+  if (card.question && !window.atlasStudy?.isGuided()) appendQuiz(view, card);
   if (card.location) {
     view.append(element("h4", "section-label", "Put it on the map"));
     appendMap(view, card);
@@ -391,12 +450,67 @@ function openMaterial() {
   $("#material-text").value = state.text;
   $("#material-title").value = state.title;
   $("#material-error").hidden = true;
+  $("#material-mode").value = "guided";
   updateInputCount();
   $("#material-dialog").showModal();
+  loadDemoChoices();
   refreshStatus().catch(() => {
     $("#ai-notice").textContent = "Could not check AI availability. Close and reopen this window to try again.";
   });
 }
+
+let demoMaterials = [];
+let demoChoicesLoading = false;
+async function loadDemoChoices() {
+  const select = $("#demo-material");
+  if (!select || demoMaterials.length || demoChoicesLoading) return;
+  demoChoicesLoading = true;
+  try {
+    const result = await api("/api/demo-materials");
+    demoMaterials = result.materials;
+    for (const material of demoMaterials) {
+      const option = element("option", "", `${material.title} · ${material.word_count.toLocaleString()} words`);
+      option.value = material.id;
+      select.append(option);
+    }
+  } catch (error) {
+    $("#demo-material-info").textContent = "Could not load demo readings. Reopen this window to retry, or upload your own file.";
+  } finally { demoChoicesLoading = false; }
+}
+
+$("#demo-material")?.addEventListener("change", event => {
+  const material = demoMaterials.find(item => item.id === event.target.value);
+  $("#load-demo-material").disabled = !material;
+  const info = $("#demo-material-info");
+  info.replaceChildren();
+  if (material) {
+    info.append(document.createTextNode(`${material.level} ${material.license} · `), safeLink("Source ↗", material.source_url));
+  } else info.textContent = "The original source credits and licence are included in each reading.";
+});
+
+$("#load-demo-material")?.addEventListener("click", async event => {
+  const button = event.currentTarget;
+  const select = $("#demo-material");
+  const submit = $("#analyze-button");
+  const error = $("#material-error");
+  button.disabled = select.disabled = submit.disabled = true;
+  button.textContent = "Loading…";
+  try {
+    const material = await api(`/api/demo-materials/${encodeURIComponent(select.value)}`);
+    $("#material-text").value = material.text;
+    $("#material-title").value = material.title;
+    updateInputCount();
+    error.hidden = true;
+    $("#demo-material-info").textContent = `Loaded ${material.title}. Review or edit the text below, then choose Explore this reading. Source credits and licence are included.`;
+  } catch (failure) {
+    error.textContent = failure.message;
+    error.hidden = false;
+  } finally {
+    select.disabled = submit.disabled = false;
+    button.disabled = !select.value;
+    button.textContent = "Use this material";
+  }
+});
 
 function updateInputCount() {
   const value = $("#material-text").value.trim();
@@ -420,14 +534,19 @@ async function readFile(file) {
 }
 
 async function analyze(text, title, sample = false, useAI = false) {
-  const result = await api("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, use_ai: useAI, session_id: state.session }) });
+  const materialId = sample ? null : crypto.randomUUID();
+  const result = await api("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text, use_ai: useAI, summarize_with_ai: !sample && useAI, generate_quiz: !sample && $("#material-mode").value === "guided", session_id: state.session, material_id: materialId, material_title: title || "Untitled material" }) });
+  state.materialId = materialId;
+  state.navigation = []; state.returnTo = null;
+  state.cards.clear();
   state.requestSequence++;
   state.historyId = null;
-  state.analysis = structuredClone(result);
+  state.analysis = structuredClone({...result, ai_enabled: useAI});
+  renderSummary();
   let historyWarning = "";
   if (!sample) {
     try {
-      const entry = { id: crypto.randomUUID(), title: title || text.trim().split("\n")[0].slice(0, 100), text, analysis: structuredClone(result), useAI, createdAt: Date.now(), cards: {} };
+      const entry = { id: materialId, title: title || text.trim().split("\n")[0].slice(0, 100), text, analysis: structuredClone(result), useAI, createdAt: Date.now(), cards: {} };
       await personalStore.put("history", entry);
       state.historyId = entry.id;
       personalChanged();
@@ -442,12 +561,14 @@ async function analyze(text, title, sample = false, useAI = false) {
   $("#document-label").textContent = sample ? "SAMPLE LESSON" : (title || "YOUR MATERIAL").toUpperCase();
   $("#word-count").textContent = `${result.word_count.toLocaleString()} words · ${result.mentions.length} highlights`;
   $("#reading-status").textContent = [...result.warnings, historyWarning].filter(Boolean).join(" ") || (result.mentions.length ? "" : "No concepts found in the local collection. Try the library search or optional AI assistance.");
-  updateUsage(result.usage);
+  updateUsage(result.usage, {tool_requests: result.usage.tool_requests});
+  refreshStatus();
   renderPassage();
   renderIndex();
   renderCard();
+  await window.atlasStudy?.onMaterial(false, sample ? "explore" : $("#material-mode").value);
   const first = state.mentions.findIndex(m => m.id);
-  if (first >= 0) {
+  if (first >= 0 && !window.atlasStudy?.isGuided()) {
     // Start with the lesson's central idea where present.
     const central = state.mentions.findIndex(m => m.id === "wiki:Oceanic climate");
     selectMention(central >= 0 ? central : first);
@@ -565,6 +686,7 @@ async function renderCollection() {
       open.addEventListener("click", () => kind === "history" ? restoreHistory(entry.id) : openSaved(entry.id));
       row.append(open);
       const actions = element("div", "collection-entry-actions");
+      if (kind === "history") window.atlasStudy?.historyAction(actions, entry);
       if (kind === "saved") {
         const note = element("button", "text-button", entry.note ? "Edit note" : "Add note");
         note.setAttribute("aria-label", `${entry.note ? "Edit" : "Add"} note for ${entry.card.title}`);
@@ -591,9 +713,13 @@ async function restoreHistory(id) {
     if (!entry) { await renderCollection(); return; }
     state.requestSequence++;
     state.historyId = entry.id;
+    state.materialId = entry.id;
+    state.navigation = []; state.returnTo = "history";
     state.text = entry.text;
     state.title = entry.title;
     state.analysis = structuredClone(entry.analysis);
+    if (state.analysis.ai_enabled === undefined) state.analysis.ai_enabled = Boolean(entry.useAI);
+    renderSummary();
     state.mentions = structuredClone(entry.analysis.mentions);
     state.selectedMention = null;
     state.card = null;
@@ -602,11 +728,12 @@ async function restoreHistory(id) {
     $("#document-label").textContent = entry.title.toUpperCase();
     $("#word-count").textContent = `${entry.analysis.word_count.toLocaleString()} words · ${entry.analysis.mentions.length} highlights`;
     $("#reading-status").textContent = ["Restored from History — no new AI analysis.", ...entry.analysis.warnings].join(" ");
+    await window.atlasStudy?.onMaterial(true);
     renderPassage(); renderIndex(); renderCard();
     $("#collection-dialog").close();
     const previous = state.mentions.findIndex(mention => mention.id === entry.lastCardId);
     const first = previous >= 0 ? previous : state.mentions.findIndex(mention => mention.id);
-    if (first >= 0) selectMention(first);
+    if (first >= 0 && !window.atlasStudy?.isGuided()) selectMention(first);
     $("#passage").focus();
   } catch (error) { toast(error.message); }
 }
@@ -615,6 +742,8 @@ async function openSaved(id) {
   try {
     const entry = await personalStore.get("saved", id);
     if (!entry) { await renderCollection(); return; }
+    rememberCard();
+    state.returnTo = "saved";
     state.requestSequence++;
     activateMention(null);
     state.card = structuredClone(entry.card);
@@ -643,7 +772,7 @@ function requestDelete(kind, id, title) {
   state.pendingDelete = { kind, id };
   $("#delete-title").textContent = id ? `Delete “${title}”?` : `Clear ${kind === "history" ? "all history" : "all saved concepts"}?`;
   $("#delete-description").textContent = kind === "history"
-    ? "This removes the stored reading and analysis from this browser. Your saved concepts are kept. This cannot be undone."
+    ? "This removes the stored reading, analysis, and linked guided-study answers from this browser. Your saved concepts are kept. This cannot be undone."
     : "This removes the saved explanation and its personal note from this browser. Your reading history is kept. This cannot be undone.";
   $("#delete-error").hidden = true;
   $("#delete-dialog").showModal();
@@ -661,6 +790,7 @@ $("#confirm-delete").addEventListener("click", async event => {
   try {
     if (pending.id) await personalStore.delete(pending.kind, pending.id);
     else await personalStore.clear(pending.kind);
+    if (pending.kind === "history") await window.atlasStudy?.removeForHistory(pending.id);
     if (pending.kind === "history" && (!pending.id || pending.id === state.historyId)) state.historyId = null;
     $("#delete-dialog").close();
     state.pendingDelete = null;
@@ -683,10 +813,6 @@ $("#save-note").addEventListener("click", async event => {
   finally { event.target.disabled = false; }
 });
 
-async function loadSample() {
-  const sample = await api("/api/sample");
-  await analyze(sample.text, sample.title, true);
-}
 
 let searchTimer;
 $("#concept-search").addEventListener("input", () => {
@@ -794,20 +920,16 @@ $("#material-form").addEventListener("submit", async event => {
   } catch (e) { error.textContent = e.message; error.hidden = false; }
   finally { button.disabled = false; button.textContent = "Explore this reading →"; }
 });
-$("#use-sample").addEventListener("click", async event => {
-  event.target.disabled = true;
-  try { await loadSample(); $("#material-dialog").close(); }
-  catch (error) { $("#material-error").textContent = error.message; $("#material-error").hidden = false; }
-  finally { event.target.disabled = false; }
-});
 
 async function refreshStatus() {
+    const wasAvailable = Boolean(state.status?.ai_available);
     state.status = await api("/api/status", { cache: "no-store" });
     $("#library-status").textContent = `${state.status.knowledge_count} entries to explore`;
     $("#use-ai").disabled = !state.status.ai_available;
     if (!state.status.ai_available) $("#use-ai").checked = false;
+    else if (!wasAvailable) $("#use-ai").checked = true;
     $("#ai-notice").textContent = state.status.ai_available
-      ? "Sends your English text to OpenAI. Suggestions may need checking. Local recognition remains available."
+      ? "Sends your English text to OpenAI for concept recognition and a short summary. Guided study adds one call for a quiz of up to five questions."
       : "Not configured. The local geography library is ready to use.";
 }
 
@@ -818,6 +940,13 @@ document.addEventListener("visibilitychange", () => {
 
 async function start() {
   renderCard();
+  const welcome = element("div", "reading-welcome");
+  welcome.append(element("h3", "", "Start with your own reading"), element("p", "", "Choose a demo material, upload a text file, or paste a passage. Nothing is loaded until you choose."));
+  const begin = element("button", "button primary", "New material"); begin.id = "start-new-material"; begin.type = "button"; begin.addEventListener("click", openMaterial); welcome.append(begin);
+  $("#passage").replaceChildren(welcome);
+  $("#document-label").textContent = "CHOOSE YOUR MATERIAL";
+  $("#study-start").disabled = true;
+  openMaterial();
   try {
     await refreshStatus();
     await refreshPersonalCounts().catch(error => toast(error.message));
@@ -825,10 +954,9 @@ async function start() {
       state.world = world;
       if (state.card?.location) renderCard();
     }).catch(() => {});
-    await loadSample();
   } catch (error) {
     $("#library-status").textContent = "Connection unavailable";
     $("#reading-status").textContent = error.message;
   }
 }
-start();
+if (!window.atlasBootDeferred) start();

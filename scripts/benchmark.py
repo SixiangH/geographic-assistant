@@ -12,7 +12,7 @@ from app.main import create_app
 
 
 def main():
-    words = (ROOT / "data" / "sample.txt").read_text(encoding="utf-8").split()
+    words = (ROOT / "data" / "demo-materials" / "01_the_hydrological_cycle.txt").read_text(encoding="utf-8").split()
     text = " ".join((words * 20)[:2000])
     with tempfile.TemporaryDirectory() as directory:
         app = create_app(Settings(database=Path(directory) / "benchmark.db", api_key="", online=False))

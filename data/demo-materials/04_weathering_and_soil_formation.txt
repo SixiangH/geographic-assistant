@@ -1,0 +1,87 @@
+Title: Weathering and Soil Formation
+Book chapter: Weathering, Sediment, and Soil
+Source: Physical Geology (bookdown adaptation)
+Source URL: https://github.com/paleolimbot/physical-geology/blob/master/08-weathering-sediment-and-soil.Rmd
+Original textbook: https://openpress.usask.ca/physicalgeology/
+Authors/source credits: Physical Geology, First University of Saskatchewan Edition (Karla Panchuk) and Physical Geology (Steven Earle)
+Accessed: 2026-10-08
+Level: Introductory university textbook, not a secondary-school textbook.
+License: Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+License URL: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Required attribution: Physical Geology, First University of Saskatchewan Edition by Karla Panchuk used under a CC BY-NC-SA 4.0 international license.
+Attribution URL: https://openpress.usask.ca/physicalgeology/
+Conversion: Complete prose of the named section. Code chunks, figures, HTML and Markdown formatting removed; no generated expansion. References to figures remain where present.
+Body word count (English words only; header excluded): 1296
+
+--- ARTICLE TEXT ---
+
+Weathering is a key part of the process of soil formation, and soil is critical to our existence on Earth. In other words, we owe our existence to weathering, and we need to take care of the soil!
+
+Many people refer to any loose material on Earth’s surface as soil, but to scientists soil is the material that includes organic matter, forms within the top few tens of centimetres of the surface, and is important for sustaining plant growth.
+
+Soil is a complex mixture of minerals (~45%), organic matter (~5%), and empty space (~50%, filled to varying degrees with air and water). The mineral content of soil varies, but is dominated by clay minerals and quartz, along with minor amounts of feldspar and small fragments of rock.
+
+The types of weathering that take place within a region have a major influence on soil composition and texture. For example, in a warm climate where chemical weathering dominates, soils tend to be richer in clay. Soil scientists describe soil texture in terms of the relative proportions of sand, silt, and clay (Figure [figure reference omitted]). Sand and silt components are dominated by quartz, with lesser amounts of feldspar and rock fragments. The clay component is dominated by clay minerals.
+
+Factors Affecting How Soil Forms
+
+Soil forms through the mechanical and chemical weathering of rocks and sediments, and the accumulation and decay of organic matter. The factors that affect the nature of soil and the rate of its formation include:
+
+- Climate, especially average temperature and precipitation amounts, and the consequent types of vegetation
+- The parent rock or sediment that was weathered to make the soil
+- The slope of the surface where soil is accumulating
+- How long soil has been forming at a location
+
+Climate
+
+Both the mechanical breakup of rocks and the chemical weathering of minerals contribute to soil formation. The downward percolation of water brings dissolved ions and also facilitates chemical reactions. Soil forms most readily under temperate to tropical conditions, and moderate precipitation. Temperature matters because chemical weathering reactions and those facilitated by organisms proceed fastest under warm conditions, and plant growth is enhanced in warm climates. Where the climate is cooler, the rates of chemical weathering reactions decrease, and when water is frozen, may cease entirely.
+
+Although water is needed for chemical weathering to take place, too much water can lead to soils that lack nutrients. In rain forests, for example, high rainfall contributes so much water that important nutrients are leached away, and acidic soils are left behind. In humid and poorly drained regions, swampy conditions may prevail, producing soil that is dominated by organic matter, but low in inorganic nutrients.
+
+Too little water (e.g., in deserts and semi-deserts) limits the rate of downward chemical transport, and it also means that salts and carbonate ions dissolved in upward-moving groundwater can precipitate and build up in sediments, hindering organic activity. These soils also lack organic matter (Figure [figure reference omitted]).
+
+Parent Material
+
+Parent material for soils can be any type of bedrock, and any type of unconsolidated sediment, such as glacial deposits and stream deposits. Soils are described as residual soils if they develop on bedrock, and transported soils if they develop on transported material such as glacial sediments. This doesn’t mean that the soils themselves have been transported, but that the soil developed on unconsolidated material rather than on bedrock.
+
+Sandy soils develop from quartz-rich parent material, such as granite, sandstone, or loose sand. Quartz-poor material, such as shale or basalt, generates soils with little sand.
+
+Parent materials provide important nutrients to residual soils. For example, a minor constituent of granitic rocks is the calcium-phosphate mineral apatite, which is a source of the important soil nutrient phosphorus. Basaltic parent material tends to generate very fertile soils because, in addition to phosphorus, it provides significant amounts of iron, magnesium, and calcium. The iron, magnesium, and calcium come from minerals such as olivine ((Mg,Fe)~2~SiO~4~) and plagioclase feldspar (CaAl~2~Si~2~O~8~) in the basalt.
+
+Some unconsolidated materials, such as river-flood deposits, make for especially good soils because they tend to be rich in clay minerals. Clay minerals have large surface areas with negative charges that are attractive to positively charged elements like calcium, magnesium, iron, and potassium — important nutrients for plant growth.
+
+Slope
+
+Soil can only develop where surface materials remain in place and are not frequently washed away or lost to mass wasting (landslides). Soils cannot develop where the rate of soil formation is lower than the rate of erosion, so steep slopes tend to have little or no soil.
+
+Time
+
+Even under ideal conditions, soil takes thousands of years to develop. Virtually all of southern Canada was covered with glaciers up until 14,000 years ago, and most of the central and northern parts of BC, the prairies, Ontario, and Quebec were still glaciated at 12,000 years ago. Glaciers remained in the central and northern parts of Canada until around 10,000 years ago, so conditions were still not ideal for soil development even in the southern regions. This means that soils in Canada, particularly in central and northern Canada, are relatively young and not well developed.
+
+The same applies to soils that are forming on newly created surfaces, such as recent deltas or sand bars, in areas of mass wasting, or where an area has been resurfaced by volcanic deposits.
+
+Because soil takes so long to form, human activities that damage soils have long-term consequences for ecosystems, and for the utility of the soil for food production.
+
+Soil Horizons
+
+When soils form, the downward movement of clay, water, and dissolved ions can lead to the development of chemically and texturally distinct layers known as soil horizons. In temperate climates, common soil horizons that develop are the following (Figure [figure reference omitted]):
+
+- O horizon: A layer of organic matter
+- A horizon: Partially decayed organic matter mixed with mineral material
+- E horizon: The eluviated (leached) layer from which some of the clay and iron have been removed to create a pale layer that may be sandier than the other layers
+- B horizon: Where clay, iron, and other elements from the overlying soil accumulate
+- C horizon: Contains broken fragments of rock. Weathering of the underlying bedrock or sediments is not yet complete.
+
+Although rare in Canada, another type of layer that develops in hot arid regions is known as caliche (pronounced ca-lee-chee). It forms from the downward (or in some cases upward) movement of calcium ions, and the precipitation of calcite within the soil. When well developed, caliche cements the surrounding material together to form a layer that has the consistency of concrete.
+
+How Soil Is Lost
+
+Like all geological materials, soil is subject to erosion. Under natural conditions on gentle slopes, the rate of soil formation either balances or exceeds the rate of erosion. However, human practices related to forestry and agriculture have significantly upset this balance.
+
+Soils are held in place by vegetation. When vegetation is removed, either through cutting trees or routinely harvesting crops and tilling the soil, this protection is lost. When soil is not protected, wind and water can easily erode it away.
+
+Water erosion is accentuated on sloped surfaces because fast-flowing water has greater eroding power than still water. Raindrops can disaggregate exposed soil particles, putting clay into suspension in the water. Sheetwash—unchannelled flow across a surface—carries suspended material away, and channels erode right through the soil layer, removing both fine and coarse material (Figure [figure reference omitted]).
+
+Wind erosion is exacerbated by the removal of trees that act as wind breaks, and by agricultural practices that leave bare soil exposed (Figure [figure reference omitted]).
+
+Tillage is also a factor in soil erosion, especially on slopes, because each time the soil is lifted by a cultivator, it is moved a few centimetres down the slope.

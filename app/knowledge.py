@@ -9,15 +9,20 @@ from app.config import ROOT
 
 
 class KnowledgeStore:
-    """Only public knowledge is persisted; uploaded documents never enter SQLite."""
+    """Read the bundled library and temporarily cache public online cards."""
 
     def __init__(self, path: Path):
         self.path = path
         path.parent.mkdir(parents=True, exist_ok=True)
-        self.records = json.loads((ROOT / "data" / "knowledge.json").read_text(encoding="utf-8"))
-        self.by_id = {r["id"]: r for r in self.records}
+        self.seed = json.loads((ROOT / "data" / "knowledge.json").read_text(encoding="utf-8"))
         with self.connect() as con:
             con.execute("CREATE TABLE IF NOT EXISTS cards (id TEXT PRIMARY KEY, payload TEXT NOT NULL, expires REAL NOT NULL)")
+        self.reload()
+
+    def reload(self):
+        # Legacy learned rows are retained on disk but no longer join the library.
+        self.records = self.seed
+        self.by_id = {r["id"]: r for r in self.records}
 
     def connect(self):
         return sqlite3.connect(self.path, timeout=10)

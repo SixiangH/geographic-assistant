@@ -3,9 +3,9 @@
 
 ## Components / 组件
 
-FastAPI serves both the JSON API and the static English interface. The frontend uses plain JavaScript and CSS without a build system. The local world map is drawn with SVG from Natural Earth GeoJSON, avoiding a tile-service dependency. This replaces the optional Leaflet recommendation for the initial map; external links still provide detailed maps and imagery.
+FastAPI serves both the JSON API and the static English interface. The UI shell now uses React, Vite, Tailwind CSS 4, and official shadcn/ui components. Existing JavaScript controllers retain ownership of recognition, cards, collections, and guided study. The local world map is drawn with SVG from Natural Earth GeoJSON, avoiding a tile-service dependency. This replaces the optional Leaflet recommendation for the initial map; external links still provide detailed maps and imagery. See [frontend integration](frontend-ui.md).
 
-FastAPI 同时提供 JSON API 和英语静态界面。前端使用原生 JavaScript 与 CSS，无需构建系统。本地世界地图根据 Natural Earth GeoJSON 使用 SVG 绘制，避免瓦片服务依赖。这替代了初版可选 Leaflet 方案；外部链接仍可提供详细地图和影像。
+FastAPI 同时提供 JSON API 和英语静态界面。界面框架现采用 React、Vite、Tailwind CSS 4 与官方 shadcn/ui 组件。原有 JavaScript 控制器继续管理识别、知识卡片、个人集合和引导学习。本地世界地图根据 Natural Earth GeoJSON 使用 SVG 绘制，避免瓦片服务依赖。这替代了初版可选 Leaflet 方案；外部链接仍可提供详细地图和影像。详见[前端整合说明](frontend-ui.md)。
 
 `app/config.py` loads server-side environment settings. `app/knowledge.py` loads the attributed JSON seed and persists public online cards in SQLite. `app/recognition.py` validates language and creates non-overlapping original-text spans. `app/providers.py` contains bounded OpenAI extraction and Wikipedia/Wikidata retrieval. `app/main.py` orchestrates these services and strips quiz answers from card responses.
 
@@ -64,3 +64,45 @@ Uploaded text is rendered through text nodes, not interpreted as HTML. Content S
 Extend `scripts/build_knowledge.py` to add source-backed vocabulary, study guides, reviewed relations, and questions. A richer retrieval index can replace the in-memory alias search later. OCR, document import, and model-based explanation adaptation should be added as separate validated stages.
 
 可扩展 `scripts/build_knowledge.py` 增加有来源的词汇、学习解释、审核关系和题目。后续可用更丰富检索索引替换内存别名搜索。OCR、文档导入及模型解释改写应作为独立校验阶段加入。
+
+## Local library browser / 本地知识库浏览
+
+`GET /api/library` accepts `q`, `category`, `page`, and `page_size` (1–60, default 30). It returns local seed summaries, total and category counts, and clamped pagination. Search covers aliases and definitions, with exact titles ranked first. Cached online cards are excluded. `library.js` cancels outdated requests and opens the existing card viewer; browsing makes no AI or external source calls.
+
+`GET /api/library` 接受 `q`、`category`、`page` 与 `page_size`（1–60，默认 30），返回本地初始库摘要、总量、类别数量及限制范围后的分页。搜索覆盖别名与解释，完全匹配标题优先。在线缓存卡片不计入列表。`library.js` 取消过期请求并打开现有卡片区域；浏览不调用 AI 或外部来源。
+
+## Bundled library and online snapshots / 内置知识库与在线快照
+
+The local library contains bundled knowledge only. Analysis no longer retrieves or permanently promotes newly discovered concepts; online cards are retrieved on click and cached for seven days outside Library/search. Legacy learned rows are excluded without deleting existing data. Saved stores a complete card and source snapshot in browser IndexedDB, including online concepts absent from the library, so reopening Saved needs neither the server cache nor a new lookup. Material titles and IDs are no longer attached to online cards.
+
+本地知识库仅包含项目内置条目。分析不再自动检索或永久收录新概念；在线卡片在点击时检索，临时缓存七天，不进入 Library/搜索。旧版 learned 数据不再载入知识库，但不删除既有数据。Saved 在浏览器 IndexedDB 中保存完整卡片与来源快照，包括知识库中没有的在线条目，因此重开收藏不依赖服务端缓存或重新检索。在线卡片不再附加材料标题与标识。
+
+Explorer navigation retains up to 40 previous card snapshots without repeating source/model calls. Return controls reopen the originating collection with the Library query/category/page preserved. The headline uses one upright serif typeface.
+
+探索导航保留最多 40 张之前的卡片快照，返回不重复来源或模型调用。返回按钮重新打开原集合，Library 保留搜索、分类和分页状态。顶部标题统一采用正体衬线字体。
+
+## Material summaries / 材料摘要
+
+Every accepted reading receives an English summary of at most 50 whitespace-separated words, shown inside Explore a little deeper, below its heading. Local mode ranks and extracts up to four key sentences without model calls. Enabling AI requests one additional Responses API call for a coherent summary; failed or incomplete responses fall back to local key sentences, with a visible notice. Word limits are enforced on the server even if a model exceeds them. Long AI inputs use bounded representative excerpts across the passage and are labelled accordingly.
+
+每篇已接受材料都生成不超过 50 个按空白分隔英语单词的摘要，展示于 Explore a little deeper 内的标题下方。本地模式排序并提取最多四个关键句，不调用模型。启用 AI 会增加一次 Responses API 调用以生成连贯梗概；失败或不完整响应回退到本地关键句，并显示提示。即使模型超出要求，服务端也会强制限制词数。较长 AI 输入使用遍布原文的受限代表摘录，并明确标注。
+
+Summary text, type, word count, and warnings are stored inside the analysis snapshot in browser History. Reopening a new history record restores the exact summary without model calls. Older history records without summaries show an unavailable notice and may be re-analyzed. Summaries do not change when browsing other knowledge cards, and original material remains unchanged. AI summary usage is included in session token/call/cost accounting. Sample lessons use local summaries only.
+
+摘要文字、类型、词数和提示随分析快照存入浏览器 History。重新打开新历史记录恢复原摘要，不调用模型。没有摘要的旧记录显示缺失提示，可重新分析。浏览其他知识卡片不改变材料摘要，原文保持完整。AI 摘要用量计入会话 token、调用及费用统计。示例课文仅使用本地摘要。
+
+OpenAI request format reference / OpenAI 请求格式参考：[Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs).
+
+
+## Reading layout / 阅读布局
+
+The original passage expands to its full height and scrolls with the page. At widths above 720 px, the explorer stays sticky within the workspace, with viewport-bounded height and an independently scrollable explanation. Selecting a new card resets the explanation scroll position. Both numbered headings align and share a white background. The summary sits below the explorer heading and can be collapsed; long summaries scroll within their own bounded area. At narrower widths the panels stack in normal page flow.
+
+原文按全文高度展开，随页面滚动。宽度超过 720 像素时，探索区域在工作区内保持吸顶，高度受视口限制，解释内容独立滚动。选择新卡片时，解释滚动位置重置到顶部。两侧编号标题对齐并采用白色背景。摘要位于探索标题下方，可收起；较长摘要在自身有限区域内滚动。更窄屏幕上，两栏上下排列，随页面正常滚动。
+
+
+## Guided study / 引导学习
+
+Guided study adds confirmed targets, prediction and revision, baseline and recall/transfer checks, seven-day review reminders, browser-only learning evidence, provisional self-assessment, and JSON export. Explore freely remains available. See [Guided Study and Learning Evidence](guided-study.md).
+
+引导学习新增目标确认、预测与修订、基线和回忆或迁移检查、七天复习提醒、仅保存在浏览器的学习证据、暂定自评及 JSON 导出。保留自由探索模式，详见上方双语设计文档。

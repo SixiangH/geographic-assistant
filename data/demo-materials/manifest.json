@@ -1,0 +1,102 @@
+[
+  {
+    "id": "01_the_hydrological_cycle",
+    "filename": "01_the_hydrological_cycle.txt",
+    "title": "The Hydrological Cycle",
+    "word_count": 755,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/14-streams-and-floods.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "02_drainage_basins",
+    "filename": "02_drainage_basins.txt",
+    "title": "Drainage Basins",
+    "word_count": 1615,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/14-streams-and-floods.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "03_flooding",
+    "filename": "03_flooding.txt",
+    "title": "Flooding",
+    "word_count": 1525,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/14-streams-and-floods.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "04_weathering_and_soil_formation",
+    "filename": "04_weathering_and_soil_formation.txt",
+    "title": "Weathering and Soil Formation",
+    "word_count": 1421,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/08-weathering-sediment-and-soil.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "05_factors_that_control_slope_stability",
+    "filename": "05_factors_that_control_slope_stability.txt",
+    "title": "Factors That Control Slope Stability",
+    "word_count": 2291,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/15-mass-wasting.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "06_causes_of_climate_change",
+    "filename": "06_causes_of_climate_change.txt",
+    "title": "Causes of Climate Change",
+    "word_count": 4455,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/16-earth-system-change.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "07_methods_for_studying_past_climate",
+    "filename": "07_methods_for_studying_past_climate.txt",
+    "title": "Methods for Studying Past Climate",
+    "word_count": 1937,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/16-earth-system-change.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "08_humans_in_the_earth_system",
+    "filename": "08_humans_in_the_earth_system.txt",
+    "title": "Humans in the Earth System",
+    "word_count": 2751,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/16-earth-system-change.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "09_welcome_to_the_anthropocene",
+    "filename": "09_welcome_to_the_anthropocene.txt",
+    "title": "Welcome to the Anthropocene",
+    "word_count": 2143,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/16-earth-system-change.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  },
+  {
+    "id": "10_types_of_glaciers",
+    "filename": "10_types_of_glaciers.txt",
+    "title": "Types of Glaciers",
+    "word_count": 2072,
+    "level": "Introductory university textbook, not a secondary-school textbook.",
+    "source": "Physical Geology (bookdown adaptation)",
+    "source_url": "https://github.com/paleolimbot/physical-geology/blob/master/17-glaciation.Rmd",
+    "license": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+  }
+]
