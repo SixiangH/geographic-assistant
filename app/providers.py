@@ -9,7 +9,7 @@ import httpx
 from app.config import Settings
 from app.ai_errors import ai_failure_reason
 
-UA = "GeographyLearningAgent/0.1 (local educational prototype)"
+UA = "AtlasGeographyLearning/0.1 (https://github.com/SixiangH/geographic-assistant; educational prototype)"
 
 
 class ProviderError(Exception):
@@ -61,7 +61,23 @@ class WikipediaProvider:
         tool_requests = 1
         try:
             with httpx.Client(timeout=12, headers={"User-Agent": UA}) as client:
-                payload = response_payload(client.get("https://en.wikipedia.org/w/api.php", params={"action": "query", "format": "json", "formatversion": 2, "prop": "extracts|coordinates|info|revisions|pageprops", "inprop": "url", "exintro": 1, "explaintext": 1, "rvprop": "ids|timestamp", "redirects": 1, "titles": title}))
+                try:
+                    payload = response_payload(client.get("https://en.wikipedia.org/w/api.php", params={"action": "query", "format": "json", "formatversion": 2, "prop": "extracts|coordinates|info|revisions|pageprops", "inprop": "url", "exintro": 1, "explaintext": 1, "rvprop": "ids|timestamp", "redirects": 1, "titles": title}))
+                except (httpx.HTTPError, ValueError):
+                    # Wikimedia's summary endpoint is a second official route when
+                    # the Action API is unavailable from a hosting network.
+                    tool_requests += 1
+                    summary = response_payload(client.get("https://en.wikipedia.org/api/rest_v1/page/summary/" + quote(title.replace(" ", "_"), safe="")))
+                    if summary.get("type") == "disambiguation":
+                        raise ProviderError("This term has no single verified article. Try a more specific geographical name.")
+                    page = {"title": summary["title"], "extract": summary.get("extract", ""),
+                            "fullurl": summary.get("content_urls", {}).get("desktop", {}).get("page"),
+                            "coordinates": [summary["coordinates"]] if summary.get("coordinates") else [],
+                            "revisions": [{"revid": summary.get("revision", ""), "timestamp": summary.get("timestamp")}],
+                            "pageprops": {"wikibase_item": summary.get("wikibase_item")}}
+                    if not page["fullurl"]:
+                        page.pop("fullurl")
+                    payload = {"query": {"pages": [page]}}
                 pages = payload.get("query", {}).get("pages", [])
                 if not pages or "missing" in pages[0] or "disambiguation" in pages[0].get("pageprops", {}):
                     raise ProviderError("This term has no single verified article. Try a more specific geographical name.")
